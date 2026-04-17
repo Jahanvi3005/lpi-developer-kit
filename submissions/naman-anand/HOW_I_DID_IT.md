@@ -7,8 +7,8 @@
 
 1.  **Environment Setup:** I cloned the repository and initialized the environment using `npm install`. I encountered a small delay with dependencies due to network speed, so I used the `--prefer-offline` flag as suggested in the troubleshooting guide.
 2.  **Validation & Proof of Work:** I ran `npm run test-client` to ensure the baseline was stable. All 8/8 tools passed, confirming the MCP server logic was sound. I captured this raw terminal output and saved it in `test_output.txt` for automated verification.
-3.  **Manual Fuzzing:** Instead of just running automated tests, I manually invoked the server using `node dist/src/index.js`. I focused on "Black Box" testing—sending inputs that the developers likely didn't expect, such as SQL injection strings (`DROP TABLE`), malformed JSON, and empty objects.
-4.  **Information Gathering:** I analyzed the error outputs. I noticed that while the tools are read-only, the server's error handling reveals internal directory structures, which I documented as a security finding in my bug report.
+3.  **Manual Fuzzing:** Instead of just running automated tests, I manually invoked the server using `node dist/src/index.js`. I focused on "Black Box" testing sending inputs that the developers likely didn't expect, such as SQL injection strings (`DROP TABLE`), malformed JSON, and empty objects.
+4.  **Information Gathering:** I analyzed the error outputs. I noticed that while the tools are read only, the server's error handling reveals internal directory structures, which I documented as a security finding in my bug report.
 
 ## Problems Encountered & Solutions
 
