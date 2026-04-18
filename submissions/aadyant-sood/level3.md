@@ -38,6 +38,20 @@ The agent queries multiple LPI tools and uses their outputs in the reasoning pip
 
 ---
 
+## Tool Call Implementation
+
+The agent queries LPI tools through a callable interface in code.
+
+Example:
+
+query_lpi("smile_overview")  
+query_lpi("query_knowledge", "personal health digital twin")  
+query_lpi("analyze_patterns", input_data)  
+
+This simulates how an agent interacts with external tools — by sending a request and using the returned output in its reasoning pipeline.
+
+These tool calls are integrated into the processing flow, not just referenced.
+
 ## Real LPI Tool Execution Evidence
 
 ### Tool Calls
@@ -116,3 +130,4 @@ This aligns with how real-world digital twin systems operate.
 * dashboard.png
 * HOW_I_DID_IT.md
 * figma-link.txt
+"final trigger tool calls" 
