@@ -80,3 +80,40 @@ For example:
 * High stress → system highlights patterns
 
 These insights are conceptually derived using LPI tools such as smile_overview and query_knowledge.
+
+---
+
+## Design Decisions (Beyond Instructions)
+
+Although the task was to design a UI dashboard, I approached it as a system rather than just a visual layout.
+
+Instead of building a static interface, I structured it like a digital twin system:
+- Inputs: sleep, energy, stress  
+- Processing: identifying patterns in user behavior  
+- Output: actionable insights  
+
+I intentionally added elements like sync status and AI-powered insight to simulate how a real digital twin continuously updates and provides feedback.
+
+---
+
+## What I Would Do Differently
+
+If I had more time, I would:
+
+- Replace static logic with real-time API-based data  
+- Implement asynchronous processing for faster insight updates  
+- Add structured logging instead of simple output-based debugging  
+- Integrate actual LPI tool calls instead of conceptual usage  
+
+---
+
+## System Thinking
+
+Even though this was a UI/UX task, I treated it as a system design problem.
+
+The dashboard represents:
+- data collection  
+- processing  
+- insight generation  
+
+This reflects how real-world digital twin systems operate.

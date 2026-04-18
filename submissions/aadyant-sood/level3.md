@@ -26,6 +26,17 @@ Output: “Your energy dips after 2 PM, consider taking a short break.”
 2. View the dashboard layout  
 3. Understand how insights are generated based on inputs  
 
+## Design Approach
+
+Although this is a UI prototype, it is designed as a system that mimics agent behavior.
+
+The system:
+- accepts inputs (sleep, energy, stress)
+- processes them using logic
+- generates insights
+
+This approach aligns with how digital twin systems function.
+
 ## Files
 - dashboard.png
 - HOW_I_DID_IT.md
