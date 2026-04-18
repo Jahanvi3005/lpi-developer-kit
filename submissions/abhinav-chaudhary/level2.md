@@ -47,7 +47,7 @@ particular word or token has high relevance to the output prediction
 * I was not familiar with running a local LLM at first
 
 ## How I Solved Them
-* I made sure I was working in the correct repository and followed proper Git steps
+* I made sure that i was working in the correct repository and followed proper Git steps
 * I synced my fork with the upstream repo and resolved conflicts carefully
 * I followed Ollama’s documentation and was able to run the model successfully after setup
 
