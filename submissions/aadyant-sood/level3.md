@@ -139,4 +139,4 @@ This aligns with how real-world digital twin systems operate.
 
 ---
 
-Final update: integrated explicit LPI tool execution flow and reasoning pipeline.
+Final update: integrated explicit LPI tool execution flow and reasoning pipeline
