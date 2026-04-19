@@ -6,6 +6,8 @@
 ## Agent Location
 The agent code is in (https://github.com/Shishir-DS28/lpi-level3-agent) in this repository.
 
+**'agent.py'**
+
 ## What It Does
 
 **SMILE Digital Twin Advisor** — an intelligent AI agent that connects to the LPI MCP server, dynamically selects relevant tools based on user questions, and returns explainable answers with full provenance tracking.
