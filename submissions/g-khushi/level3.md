@@ -2,7 +2,7 @@
 
 ## GitHub Repository
 
-https://github.com/g-khushi/lpi-level3-agent
+https://github.com/g-khushi/lpi-agent-smile-advisor
 
 
 ## Overview
