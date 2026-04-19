@@ -26,6 +26,8 @@ User Input → Query Analysis → Tool Selection → Tool Execution → Aggregat
 * Purpose: Provide conceptual understanding
 * Output: Returns theoretical explanation based on LPI concepts
 
+### 3 .smile_overview → high-level SMILE concepts
+
 ---
 
 ## 🔄 Agent Flow
