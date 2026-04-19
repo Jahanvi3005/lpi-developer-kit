@@ -21,7 +21,6 @@ I built an LPI Agent (SMILE Advisor) that connects to the LPI sandbox and uses m
 * **query_knowledge** → Provides domain-specific knowledge
 * **get_case_studies** → Provides real-world examples
 
-
 ## Example
 
 **Input:**
@@ -42,7 +41,6 @@ What are digital twins in healthcare?
 * Final structured answer
 
 ## Explainability
-
 The agent provides explainable outputs by clearly showing how each tool contributes to the final answer.
 
 * `smile_overview` → Gives the base methodology
