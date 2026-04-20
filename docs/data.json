@@ -243,18 +243,32 @@
       "name": "Sania Gurung",
       "github": "SANIAGRG",
       "skills": [
-        "python",
         "machine-learning",
-        "tensorflow",
-        "computer-vision",
-        "java",
+        "opencv",
+        "pytorch",
         "sql",
-        "scikit-learn"
+        "data-preprocessing",
+        "tensorflow",
+        "neural-networks",
+        "java",
+        "deep-learning",
+        "scikit-learn",
+        "computer-vision",
+        "pandas",
+        "ollama",
+        "python",
+        "nlp",
+        "numpy",
+        "llm",
+        "object-detection",
+        "keras",
+        "data-science"
       ],
       "interests": [
         "agents",
         "NLP",
-        "AI-pipelines"
+        "AI-pipelines",
+        "LLMs"
       ],
       "track": "A: Agent Builders",
       "level": 3,
