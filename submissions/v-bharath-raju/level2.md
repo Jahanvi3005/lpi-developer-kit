@@ -2,8 +2,8 @@
 
 ## Setup
 - Installed Node.js and dependencies
-- Built the project successfully
-- Ran test client and verified all tools
+- Built the project successfully using `npm run build`
+- Ran test client using `npm run test-client` and verified all tools
 
 ## Testing Approach
 Tested the LPI sandbox with various edge cases including:
@@ -59,3 +59,40 @@ Result: Error message returned: 'query' parameter is required
 
 ## Conclusion
 The LPI sandbox is stable and handles most unexpected inputs safely. However, input validation can be improved to ensure stricter handling of edge cases and enhance overall security.
+
+
+
+
+## Test Execution Output
+
+The following output shows successful execution of the LPI test client:
+
+```text
+[PASS] smile_overview({})
+[PASS] smile_phase_detail({"phase":"reality-emulation"})
+[PASS] list_topics({})
+[PASS] query_knowledge({"query":"explainable AI"})
+[PASS] get_case_studies({})
+[PASS] get_case_studies({"query":"smart buildings"})
+[PASS] get_insights({"scenario":"personal health digital twin","tier":"free"})
+[PASS] get_methodology_step({"phase":"concurrent-engineering"})
+
+...
+
+
+
+## LLM Output Evidence
+
+Example responses from the system:
+
+Input:
+query_knowledge("explainable AI")
+
+Output:
+The system returned knowledge entries related to explainable AI in digital twin systems, including methodology and real-world applications.
+
+Input:
+get_insights("personal health digital twin")
+
+Output:
+The system provided insights related to digital twin applications in healthcare, including pharmacokinetic modeling and personalized analysis.
