@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WINNIIO Intern Interview — Book Your Slot</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d1117;color:#c9d1d9;padding:20px;max-width:900px;margin:0 auto}
+h1{color:#58a6ff;font-size:1.5em;margin-bottom:4px}
+.sub{color:#8b949e;margin-bottom:24px;font-size:.9em;line-height:1.5}
+.info{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:16px;margin-bottom:24px;line-height:1.6;font-size:.9em}
+.info strong{color:#58a6ff}
+.info ul{margin:8px 0 0 20px;color:#8b949e}
+.info ul li{margin-bottom:4px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;color:#c9d1d9;font-weight:600;margin-bottom:6px;font-size:.9em}
+.form-group input{width:100%;padding:10px 14px;background:#161b22;border:1px solid #30363d;border-radius:8px;color:#c9d1d9;font-size:.95em}
+.form-group input:focus{outline:none;border-color:#58a6ff}
+h2{color:#c9d1d9;font-size:1.1em;margin:24px 0 12px}
+.slots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+@media(max-width:600px){.slots{grid-template-columns:1fr}}
+.slot{background:#161b22;border:2px solid #30363d;border-radius:10px;padding:14px;cursor:pointer;transition:all .2s;position:relative}
+.slot:hover{border-color:#58a6ff;background:#1c2128}
+.slot.selected{border-color:#3fb950;background:#3fb95011}
+.slot.full{opacity:.45;cursor:not-allowed;border-color:#21262d}
+.slot .day{font-weight:700;font-size:.95em;color:#c9d1d9}
+.slot .time{color:#58a6ff;font-size:.85em;margin-top:2px}
+.slot .seats{color:#8b949e;font-size:.8em;margin-top:6px}
+.slot .seats .count{color:#3fb950;font-weight:700}
+.slot .seats .count.low{color:#ffa657}
+.slot .seats .count.none{color:#f85149}
+.slot .check{position:absolute;top:12px;right:12px;width:22px;height:22px;border:2px solid #30363d;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
+.slot.selected .check{border-color:#3fb950;background:#3fb950;color:#fff}
+.submit{width:100%;padding:14px;background:#238636;color:#fff;border:none;border-radius:8px;font-size:1em;font-weight:700;cursor:pointer;transition:background .2s}
+.submit:hover{background:#2ea043}
+.submit:disabled{background:#21262d;color:#8b949e;cursor:not-allowed}
+.confirm{background:#161b22;border:1px solid #3fb950;border-radius:10px;padding:20px;margin-top:20px;text-align:center;display:none}
+.confirm h3{color:#3fb950;margin-bottom:8px}
+.confirm p{color:#8b949e;font-size:.9em;line-height:1.5}
+.footer{text-align:center;margin-top:32px;color:#8b949e;font-size:.8em}
+.footer a{color:#58a6ff;text-decoration:none}
+.tz-note{background:#ffa65711;border:1px solid #ffa657;border-radius:8px;padding:10px 14px;margin-bottom:20px;font-size:.85em;color:#ffa657}
+</style>
+</head><body>
+<h1>WINNIIO / LifeAtlas — Intern Interview Booking</h1>
+<p class="sub">Congratulations on being selected! Please book your 30-minute interview slot below.<br>You'll receive a calendar invite after booking.</p>
+
+<div class="info">
+<strong>What to expect:</strong>
+<ul>
+<li><strong>Format:</strong> 30-min code walkthrough + discussion (camera on)</li>
+<li><strong>What we review:</strong> Your L3/L4 PR submission — walk us through your code, decisions, and what you'd improve</li>
+<li><strong>Interviewers:</strong> Nicolas (CEO) + team lead for your track</li>
+<li><strong>Preparation:</strong> Have your repo open, be ready to screen-share and explain your approach</li>
+</ul>
+</div>
+
+<div class="tz-note">&#9888; All times are in <strong>CET (Central European Time, UTC+2)</strong>. Please convert to your local timezone.</div>
+
+<div class="form-group">
+<label>Full Name (as submitted in your PR)</label>
+<input type="text" id="fname" placeholder="e.g. Daksh Garg" required>
+</div>
+<div class="form-group">
+<label>Email Address</label>
+<input type="email" id="femail" placeholder="your@email.com" required>
+</div>
+<div class="form-group">
+<label>GitHub Username</label>
+<input type="text" id="fgh" placeholder="e.g. dakshgarg2006">
+</div>
+
+<h2>Select your preferred time slot</h2>
+<div class="slots" id="slots"></div>
+
+<button class="submit" id="sbtn" disabled onclick="submitBooking()">Book Interview Slot</button>
+
+<div class="confirm" id="confirm">
+<h3>&#10003; Interview Booked!</h3>
+<p id="conf-msg"></p>
+</div>
+
+<div class="footer">
+<p>WINNIIO AB &mdash; <a href="https://lifeatlas.io">lifeatlas.io</a> | Questions? Email <a href="mailto:ceo@winniio.io">ceo@winniio.io</a></p>
+</div>
+
+<script>
+const SLOTS = [
+  { id: 'A1', day: 'Wednesday, Apr 23', time: '10:00 — 12:00 CET', label: 'Morning Session A', max: 5 },
+  { id: 'A2', day: 'Wednesday, Apr 23', time: '14:00 — 16:00 CET', label: 'Afternoon Session A', max: 5 },
+  { id: 'B1', day: 'Thursday, Apr 24', time: '10:00 — 12:00 CET', label: 'Morning Session B', max: 5 },
+  { id: 'B2', day: 'Thursday, Apr 24', time: '14:00 — 16:00 CET', label: 'Afternoon Session B', max: 5 },
+  { id: 'C1', day: 'Friday, Apr 25', time: '10:00 — 12:00 CET', label: 'Morning Session C', max: 5 },
+  { id: 'C2', day: 'Friday, Apr 25', time: '14:00 — 16:00 CET', label: 'Afternoon Session C', max: 5 },
+  { id: 'D1', day: 'Monday, Apr 28', time: '10:00 — 12:00 CET', label: 'Morning Session D', max: 5 },
+  { id: 'D2', day: 'Monday, Apr 28', time: '14:00 — 16:00 CET', label: 'Afternoon Session D', max: 5 },
+];
+
+const STORAGE_KEY = 'winniio_bookings_v1';
+let selected = null;
+
+function getBookings() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; }
+}
+
+function saveBooking(slotId, name, email, gh) {
+  const bookings = getBookings();
+  if (!bookings[slotId]) bookings[slotId] = [];
+  bookings[slotId].push({ name, email, gh, ts: new Date().toISOString() });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(bookings));
+}
+
+function countBooked(slotId) {
+  const bookings = getBookings();
+  return (bookings[slotId] || []).length;
+}
+
+function render() {
+  const container = document.getElementById('slots');
+  container.innerHTML = SLOTS.map(s => {
+    const booked = countBooked(s.id);
+    const remaining = s.max - booked;
+    const full = remaining <= 0;
+    const sel = selected === s.id;
+    const countClass = remaining <= 0 ? 'none' : remaining <= 2 ? 'low' : '';
+    return `<div class="slot${sel ? ' selected' : ''}${full ? ' full' : ''}" onclick="${full ? '' : "pick('"+s.id+"')"}" >
+      <div class="day">${s.day}</div>
+      <div class="time">${s.time}</div>
+      <div class="seats">
+        <span class="count ${countClass}">${remaining > 0 ? remaining + ' seats left' : 'FULL'}</span>
+        &mdash; ${s.label}
+      </div>
+      <div class="check">${sel ? '&#10003;' : ''}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('sbtn').disabled = !selected;
+}
+
+function pick(id) {
+  selected = selected === id ? null : id;
+  render();
+}
+
+function submitBooking() {
+  const name = document.getElementById('fname').value.trim();
+  const email = document.getElementById('femail').value.trim();
+  const gh = document.getElementById('fgh').value.trim();
+  if (!name || !email || !selected) {
+    alert('Please fill in your name, email, and select a time slot.');
+    return;
+  }
+  const slot = SLOTS.find(s => s.id === selected);
+  if (!slot) return;
+
+  saveBooking(selected, name, email, gh);
+
+  const subject = encodeURIComponent(`Interview Booking: ${name} — ${slot.day} ${slot.time}`);
+  const body = encodeURIComponent(
+    `Interview Booking Confirmation\n\n` +
+    `Name: ${name}\n` +
+    `Email: ${email}\n` +
+    `GitHub: ${gh || 'N/A'}\n` +
+    `Slot: ${slot.day}, ${slot.time} (${slot.label})\n\n` +
+    `Booked at: ${new Date().toISOString()}\n\n` +
+    `— Sent from WINNIIO Interview Booking System`
+  );
+
+  const mailto = `mailto:ceo@winniio.io?cc=${encodeURIComponent(email)}&subject=${subject}&body=${body}`;
+  window.open(mailto, '_blank');
+
+  document.getElementById('confirm').style.display = 'block';
+  document.getElementById('conf-msg').innerHTML =
+    `<strong>${name}</strong>, you're booked for:<br><strong>${slot.day}, ${slot.time}</strong><br><br>` +
+    `An email confirmation is being prepared. If your email client didn't open, please email <a href="mailto:ceo@winniio.io" style="color:#58a6ff">ceo@winniio.io</a> with your selected slot.<br><br>` +
+    `You'll receive a calendar invite within 24 hours.`;
+
+  document.getElementById('sbtn').disabled = true;
+  document.getElementById('sbtn').textContent = '✓ Booked';
+  selected = null;
+  render();
+}
+
+render();
+</script>
+</body></html>
