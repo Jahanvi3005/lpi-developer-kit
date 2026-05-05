@@ -239,16 +239,15 @@ submissions/<your-github-username>/level6/
 
 | Day | What you should have |
 |-----|---------------------|
-| Mon May 5 | Neo4j instance created, `seed_graph.py` populating |
-| Tue May 6 | Graph verified in Neo4j Browser, first Streamlit page live |
-| Wed May 7 | Deploy to Streamlit Cloud (even if ugly) |
-| Thu May 8 | 4 pages working, self-test passing |
-| Fri May 9 | Polish charts, fix layout |
-| Sat-Sun | Buffer for debugging deployment issues |
+| Tue May 6 | Neo4j instance created, `seed_graph.py` populating |
+| Wed May 7 | Graph verified in Neo4j Browser, first Streamlit page live |
+| Thu May 8 | Deploy to Streamlit Cloud (even if ugly) |
+| Fri May 9 | 4 pages working, self-test passing |
+| Sat-Sun May 10-11 | Polish charts, fix layout |
 | Mon May 12 | Final push, test deployed URL |
 | **Wed May 13** | **Deadline. No extensions.** |
 
-**Deploy on day 3, not day 8.** If you wait until Tuesday to deploy, you'll spend all of Tuesday debugging deployment instead of building features.
+**Deploy by Thursday, not Monday.** If you wait until the last days to deploy, you'll spend all your time debugging deployment instead of building features.
 
 ---
 
